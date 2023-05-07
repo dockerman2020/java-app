@@ -17,6 +17,13 @@ pipeline {
   options {
     buildDiscarder(logRotator(numToKeepStr: '5'))
   }
+  stage("maven clean") {
+      steps{
+          withMaven() {
+              sh 'mvn clean'
+          }   
+      }
+  }
   stages {
     stage('Scan') {
       steps {
