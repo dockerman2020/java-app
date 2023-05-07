@@ -20,6 +20,7 @@ pipeline {
   stages {
     stage("maven clean") {
         steps{
+               sh 'df -k'
                sh 'which mvn'
         	withSonarQubeEnv(installationName: 'SonarQube') { 
                 sh 'mvn clean'
