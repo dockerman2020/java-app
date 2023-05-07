@@ -17,14 +17,14 @@ pipeline {
   options {
     buildDiscarder(logRotator(numToKeepStr: '5'))
   }
-  stage("maven clean") {
-      steps{
-          withMaven() {
-              sh 'mvn clean'
-          }   
-      }
-  }
   stages {
+    stage("maven clean") {
+        steps{
+            withMaven() {
+                sh 'mvn clean'
+            }   
+        }
+    }
     stage('Scan') {
       steps {
         withSonarQubeEnv(installationName: 'SonarQube') { 
