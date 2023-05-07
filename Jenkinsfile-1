@@ -20,7 +20,8 @@ pipeline {
   stages {
     stage("maven clean") {
         steps{
-            withMaven() {
+            #withMaven() {
+        	withSonarQubeEnv(installationName: 'SonarQube') { 
                 sh 'mvn clean'
             }   
         }
